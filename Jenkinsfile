@@ -14,6 +14,12 @@
 
 
     stages {
+        stage('read the version'){
+            steps{
+                def packagejson = readJSON file: 'package.json'
+                def appversion = packagejson
+            }
+        }
         stage('Install Dependencies') { 
             steps {
                 sh """
