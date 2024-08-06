@@ -17,8 +17,8 @@
         stage('test') { 
             steps {
                 sh """
-                cd 01-vpc
-                terraform init -reconfigure
+                echo "This is testing"
+                ls -ltr
                 """
             }
         }
