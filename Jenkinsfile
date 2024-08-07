@@ -11,10 +11,17 @@ pipeline {
         choice(name: 'action', choices: ['Apply', 'Destroy'], description: 'Pick something')
     }    
     stages {
-        stage('test') {
+        stage('read the version')
+           steps{
+            def package.json = readJSON file: 'package.json'
+            def appVersion = packageJson.version
+           }
+        stage('Install Depedencies') {
             steps {
                 sh """
-                echo "this is testing"
+                npm install
+                ls -ltr
+                echo $appversion
                 """
             }
         }
