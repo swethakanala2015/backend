@@ -1,44 +1,37 @@
- pipeline {
+pipeline {
     agent {
         label 'AGENT-1'
     }
     options {
-                // Timeout counter starts BEFORE agent is allocated
-                timeout(time: 30, unit: 'MINUTES')
-                disableConcurrentBuilds()
-                ansicolor('xterm')
-
+        timeout(time: 30, unit: 'MINUTES')
+        disableConcurrentBuilds()
+        ansicolor('xterm')
     }
-   
-}
-
-
+     parameters {
+        choice(name: 'action', choices: ['Apply', 'Destroy'], description: 'Pick something')
+    }    
     stages {
-        stage('read the version'){
-            steps{
-                def packagejson = readJSON file: 'package.json'
-                def appversion = packagejson
-            }
-        }
-        stage('Install Dependencies') { 
+        stage('test') {
             steps {
                 sh """
-                npm install
+                echo "this is testing"
                 """
             }
         }
- 
+        
+        
     
-  }
-  post {
-    always{
-        echo 'I will always say hello again!'
-        deleteDir()
+    post { 
+        always { 
+            echo 'I will always say Hello again!'
+            deleteDir()
+        }
+        success { 
+            echo 'I will run when pipeline is success'
+        }
+        failure { 
+            echo 'I will run when pipeline is failure'
+        }
     }
-    success{
-        echo'I will run when pipeline is success!'
-    }
-    failure{
-        echo'I will run when pipeline is failure!'
-    }
-  }
+    
+}
