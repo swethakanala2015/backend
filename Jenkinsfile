@@ -7,6 +7,9 @@ pipeline {
         disableConcurrentBuilds()
         ansicolor('xterm')
     }
+    environment{
+        def appVersion = '' //variable declaration
+    }
      parameters {
         choice(name: 'action', choices: ['Apply', 'Destroy'], description: 'Pick something')
     }    
@@ -14,7 +17,8 @@ pipeline {
         stage('read the version')
            steps{
             def package.json = readJSON file: 'package.json'
-            def appVersion = packageJson.version
+            appVersion = packageJson.version
+            echo "application version: $appversion"
            }
         stage('Install Depedencies') {
             steps {
