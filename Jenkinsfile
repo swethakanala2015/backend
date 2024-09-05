@@ -7,31 +7,16 @@ pipeline {
         disableConcurrentBuilds()
         ansicolor('xterm')
     }
-    environment{
-        def appVersion = '' //variable declaration
-    }
-     parameters {
-        choice(name: 'action', choices: ['Apply', 'Destroy'], description: 'Pick something')
-    }    
-    stages {
-        stage('read the version')
-           steps{
-            def package.json = readJSON file: 'package.json'
-            appVersion = packageJson.version
-            echo "application version: $appversion"
-           }
-        stage('Install Depedencies') {
-            steps {
-                sh """
-                npm install
-                ls -ltr
-                echo $appversion
-                """
-            }
-        }
-        
-        
     
+  
+    stages {
+        stage('test')
+           steps{
+            sh """
+            echo "this is testing"
+            """
+           }
+      
     post { 
         always { 
             echo 'I will always say Hello again!'
