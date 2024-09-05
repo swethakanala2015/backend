@@ -5,9 +5,9 @@ pipeline {
     options {
         timeout(time: 30, unit: 'MINUTES')
         disableConcurrentBuilds()
-        ansicolor('xterm')
     }
-    stages ('test') {
+    stages  {
+        stage('test') {
            steps {
              sh """
              echo "this is testing"
@@ -15,6 +15,7 @@ pipeline {
         }
     }
 }
+
       
 post { 
     always { 
