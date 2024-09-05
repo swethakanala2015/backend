@@ -9,9 +9,9 @@ pipeline {
     }
     stages {
         stage('test')
-           steps{
-            sh """
-            echo "this is testing"
+           steps {
+             sh """
+             echo "this is testing"
             """
         }
     }
