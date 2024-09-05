@@ -7,8 +7,7 @@ pipeline {
         disableConcurrentBuilds()
         ansicolor('xterm')
     }
-    stages {
-        stage('test')
+    stages ('test') {
            steps {
              sh """
              echo "this is testing"
