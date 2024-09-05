@@ -7,20 +7,20 @@ pipeline {
         disableConcurrentBuilds()
         ansicolor('xterm')
     }
-    
-  
     stages {
         stage('test')
            steps{
             sh """
             echo "this is testing"
             """
-           }
+        }
+    }
+}
       
-    post { 
-        always { 
-            echo 'I will always say Hello again!'
-            deleteDir()
+post { 
+    always { 
+        echo 'I will always say Hello again!'
+        deleteDir()
         }
         success { 
             echo 'I will run when pipeline is success'
@@ -30,5 +30,3 @@ pipeline {
         }
     }
     
-}
-}
