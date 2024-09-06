@@ -10,7 +10,6 @@ pipeline {
         stage('Install Dependencies') {
            steps {
              sh """
-             echo "this is testing"
              npm install
             """
         }
