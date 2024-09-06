@@ -19,16 +19,15 @@ pipeline {
                 }
             }
         }
-    stage('Install Dependencies') {
-        steps {
-            sh """
-            npm install
-            ls -ltr
-            echo "application version: $appversion"
-            """
+        stage('Install Dependencies') {
+            steps {
+               sh """
+                npm install
+                ls -ltr
+                echo "application version: $appVersion"
+               """
+            }
         }
-    }
-}
 
       
 post { 
