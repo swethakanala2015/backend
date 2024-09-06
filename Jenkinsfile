@@ -10,15 +10,15 @@ pipeline {
         def appVersion = ''  //variable declaration
     }
     stages {
-        stage('read the version') {
-          steps{
-             script{
-                def packagejson = readJSON file: 'package.json'
-                appVersion = packageJson.version
-                echo "application version: $appversion"
+        stage('read the version'){
+            steps{
+                script{
+                    def packageJson = readJSON file: 'package.json'
+                    appVersion = packageJson.version
+                    echo "application version: $appVersion"
+                }
             }
         }
-    }
     stage('Install Dependencies') {
         steps {
             sh """
