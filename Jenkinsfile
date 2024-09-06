@@ -6,12 +6,12 @@ pipeline {
         timeout(time: 30, unit: 'MINUTES')
         disableConcurrentBuilds()
     }
-    stages  {
+    stages {
         stage('Install Dependencies') {
            steps {
              sh """
              npm install
-            """
+             """
         }
     }
 }
