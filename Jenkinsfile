@@ -6,12 +6,15 @@ pipeline {
         timeout(time: 30, unit: 'MINUTES')
         disableConcurrentBuilds()
     }
+    environment{
+        def appVersion = ''  //variable declaration
+    }
     stages {
         stage('read the version')
           steps{
              script{
                 def packagejson = readJSON file: 'package.json'
-                def appVersion = packageJson.version
+                appVersion = packageJson.version
                 echo "application version: $appversion"
             }
         }
