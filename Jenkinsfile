@@ -8,11 +8,11 @@ pipeline {
     }
     stages {
         stage('read the version')
-        steps{
-            script{
-               def packagejson = readJSON file: 'package.json'
-               def appVersion = packageJson.version
-               echo "application version: $appversion"
+          steps{
+             script{
+                def packagejson = readJSON file: 'package.json'
+                def appVersion = packageJson.version
+                echo "application version: $appversion"
             }
         }
     }
@@ -40,4 +40,4 @@ post {
             echo 'I will run when pipeline is failure'
         }
     }
-
+}
