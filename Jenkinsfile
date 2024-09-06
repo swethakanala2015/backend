@@ -41,4 +41,6 @@ post {
             echo 'I will run when pipeline is failure'
         }
     }
+ }
+
 }
